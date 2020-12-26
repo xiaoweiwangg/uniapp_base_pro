@@ -1,0 +1,7 @@
+.main{
+	height: 100vh;
+	overflow:auto;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}

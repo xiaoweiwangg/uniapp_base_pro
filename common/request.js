@@ -33,7 +33,7 @@ export default {
                 },
                 fail: (error) => {
 					console.log(error.errMsg)
-                    uni.showToast({ title: error.errMsg || '请求失败', icon: 'none' });
+                    uni.showToast({ title:'请求失败', icon: 'none' });
                     return rej(error) 
                 }
             });

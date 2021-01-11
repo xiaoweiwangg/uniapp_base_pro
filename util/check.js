@@ -1,12 +1,8 @@
-class Check {
+class Validate {
   constructor() {
     this.rules = {
-      max20: {
-        msg: "超出最大限制",
-        reg: (val) => !val.length > 20,
-      },
       ismoble: {
-        msg: "手机号格式不正确",
+        msg: "手机号格式错误",
         reg: (val) => !/^1[3|4|5|6|7|8|9][0-9]{9}$/.test(val),
       },
       min8: {
@@ -32,19 +28,20 @@ class Check {
 	  lis8:{
 		  msg:"邀请码为8位数的字母数字组合",
 		  reg:(val)=>val.length!=8
+	  },
+	  ispwd:{
+		  msg:'密码中必须包含字母、数字,且大于7位',
+		  reg:(val)=>/(?=.*[0-9])(?=.*[a-zA-Z]).{8,30}/.test(val)
 	  }
     };
   }
-  check(checkitem="", rules=[]) {
+  validate(checkitem="", rules=[],fn) {
    return rules.some((item) => {
       if (this.rules[item].reg(checkitem)) {
-		  uni.showToast({
-		  	title: this.rules[item].msg,
-		  	icon: 'none'
-		  });
+		  fn(this.rules[item].msg)
       }
 	  return this.rules[item].reg(checkitem);
     });
   }
 }
-export default Check;
+export default Validate;

@@ -11,7 +11,9 @@ const store = new Vuex.Store({
 	actions: {
 		connetsocket(state) {
 			const s = io($C.socketUrl, {
-				query: {},
+				query: {
+					token:'123'
+				},
 				transports: ["websocket"],
 				timeOut: 5000,
 			}) 
@@ -19,19 +21,20 @@ const store = new Vuex.Store({
 			s.on("connect", () => {
 				state.socket=s
 				console.log("连接成功")
-				s.emit('test',"this is test");
+				s.emit('test1',"来自客户端啊test1");   
+				s.emit('test2',"来自客户端啊test2");   
 				const { id } = s
-				s.on(id,(e)=>{
-					console.log("后端发送数据:",e)
+				s.on('online',(e)=>{
+					console.log("新用户上线啦",e)
 				})
 			})
 			// 连接失败
 			s.on("error", () => {
-				console.log("连接成功")
+				console.log("连接失败")
 			})
 			// 连接断开
 			s.on("disconnect", () => {
-				console.log("连接成功")
+				console.log("连接已中断")
 			})
 		},
 

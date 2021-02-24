@@ -3,8 +3,8 @@
 		onLaunch: function() {
 			//连接socket服务
 			this.$store.dispatch('connetsocket')
-			// nvue中引入图标库
 			
+			// nvue中引入图标库
 			// const domModule = weex.requireModule('dom')
 			// domModule.addRule('fontFace', {
 			//     'fontFamily': "iconfont",
@@ -36,6 +36,8 @@
 <style>
 	/*每个页面公共css */
 	@import url("/common/free.css");
+	@import url("/common/three-dots.css");
+	@import url("/common/hover.css");
 	@import url("/common/basecommon.css");
 	/* #ifndef APP-PLUS-NVUE */
 	@import url("./common/ani.css");

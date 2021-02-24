@@ -25,7 +25,7 @@ const store = new Vuex.Store({
 				s.emit('test2',"来自客户端啊test2");   
 				const { id } = s
 				s.on('online',(e)=>{
-					console.log("新用户上线啦",e)
+					console.log("联机成功",e)
 				})
 			})
 			// 连接失败
